@@ -377,9 +377,6 @@ product/etc/permissions/com.motorola.camera3.lens.xml:vendor/etc/permissions/com
 product/etc/permissions/com.motorola.camera3.xml:vendor/etc/permissions/com.motorola.camera3.xml
 product/etc/permissions/com.motorola.moto-uirefresh.xml
 
-# NFC
-vendor/bin/STFlashTool
-
 # NFC Firmware
 vendor/firmware/st21nfc_fw.bin
 vendor/firmware/st21nfc_fw7.bin
