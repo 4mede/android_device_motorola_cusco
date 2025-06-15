@@ -297,6 +297,9 @@ vendor/lib64/camera/com.qti.tuned.mot_cusco_imx896.bin
 vendor/lib64/camera/com.qti.tuned.mot_cusco_ov32b40.bin
 vendor/lib64/camera/com.qti.tuned.mot_cusco_s5kjd1.bin
 
+# CapSense
+vendor/bin/capsense_reset
+
 # Charger firmware
 vendor/firmware/cps4038.bin
 
