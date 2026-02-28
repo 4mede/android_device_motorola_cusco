@@ -32,12 +32,10 @@ vendor/lib64/hw/camera.qcom.so
 vendor/lib64/hw/com.qti.chi.override.so
 vendor/lib64/com.qti.chiusecaseselector.so
 vendor/lib64/com.qti.settings.clarence.so
-vendor/lib64/com.qti.settings.netrani.so
 vendor/lib64/com.qti.stats.common.so
 vendor/lib64/com.qualcomm.mcx.distortionmapper.so
 vendor/lib64/com.qualcomm.mcx.linearmapper.so
 vendor/lib64/com.qualcomm.mcx.policy.mfl.so
-vendor/lib64/com.qualcomm.mcx.policy.xr.so
 vendor/lib64/com.qualcomm.qti.mcx.usecase.extension.so
 vendor/lib64/libBSTHDRDETECT.so
 vendor/lib64/libBSTMultiExpoGainHDR.so
@@ -46,12 +44,6 @@ vendor/lib64/libBSTSWAD.so
 vendor/lib64/libBSTbase_share.so
 vendor/lib64/libPlatformValidatorShared.so
 vendor/lib64/libSNPE.so
-vendor/lib64/libSnpeHtpPrepare.so
-vendor/lib64/libSnpeHtpV68Stub.so
-vendor/lib64/libSnpeHtpV69Stub.so
-vendor/lib64/libSnpeHtpV73Stub.so
-vendor/lib64/libaidenoiser.so
-vendor/lib64/libaidenoiserv2.so
 vendor/lib64/libanc_hdr.so
 vendor/lib64/libanc_hdr_adapter_front_main.so
 vendor/lib64/libanc_hdr_adapter_rear_main.so
@@ -64,7 +56,6 @@ vendor/lib64/libc++_shared.so
 vendor/lib64/libcalculator.so
 vendor/lib64/libcalculator_htp.so
 vendor/lib64/libcamera2ndk_vendor.so
-vendor/lib64/libcamera_nn_stub.so
 vendor/lib64/libcamerapostproc.so
 vendor/lib64/libchilog.so
 vendor/lib64/libcom.qti.chinodeutils.so
@@ -72,12 +63,7 @@ vendor/lib64/libhdr10plus.so
 vendor/lib64/libhdr_impl.so
 vendor/lib64/libhme.so
 vendor/lib64/libipebpsstriping.so
-vendor/lib64/libipebpsstriping170.so
-vendor/lib64/libipebpsstriping480.so
 vendor/lib64/libjpege.so
-vendor/lib64/libmctfengine_stub.so
-vendor/lib64/libmfGhostDetection.so
-vendor/lib64/libmfec.so
 vendor/lib64/libmmcamera_bestats.so
 vendor/lib64/libmmcamera_cac.so
 vendor/lib64/libmmcamera_lscv35.so
@@ -92,18 +78,9 @@ vendor/lib64/libmotoisdataqueue.so
 vendor/lib64/libmpbase.so
 vendor/lib64/libopencv.so
 vendor/lib64/libopencv3a.so
-vendor/lib64/libopestriping.so
 vendor/lib64/libportrait_repair_ppl3_ocl.so
-vendor/lib64/libqll.so
-vendor/lib64/libqll10.so
-vendor/lib64/libqllengine.so
-vendor/lib64/libqshcamera.so
-vendor/lib64/libsfeShiftExtrapolation.so
-vendor/lib64/libswregistrationalgo.so
 vendor/lib64/libtfestriping.so
-vendor/lib64/libubifocus.so
 vendor/lib64/libundistort_impl.so
-vendor/lib64/libvideoml.so
 vendor/lib64/libvidhance.so
 vendor/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so
 
@@ -182,7 +159,6 @@ vendor/lib64/camera/components/com.qti.node.swmctf.so
 vendor/lib64/camera/components/com.qti.node.swmfnr.so
 vendor/lib64/camera/components/com.qti.node.swpdpc.so
 vendor/lib64/camera/components/com.qti.node.swpreprocess.so
-vendor/lib64/camera/components/com.qti.node.swregistration.so
 vendor/lib64/camera/components/com.qti.node.swvrt.so
 vendor/lib64/camera/components/com.qti.stats.aec.so
 vendor/lib64/camera/components/com.qti.stats.aecwrapper.so
@@ -256,14 +232,10 @@ vendor/lib64/com.qti.feature2.derivedoffline.so
 vendor/lib64/com.qti.feature2.frameselect.so
 vendor/lib64/com.qti.feature2.fusion.so
 vendor/lib64/com.qti.feature2.generic.so
-vendor/lib64/com.qti.feature2.gs.netrani.so
 vendor/lib64/com.qti.feature2.hdr.so
 vendor/lib64/com.qti.feature2.mcreprocrt.so
 vendor/lib64/com.qti.feature2.memcpy.so
-vendor/lib64/com.qti.feature2.mfsr.netrani.so
-vendor/lib64/com.qti.feature2.mfsr.sm8450.so
 vendor/lib64/com.qti.feature2.mfsr.so
-vendor/lib64/com.qti.feature2.ml.fillmore.so
 vendor/lib64/com.qti.feature2.ml.so
 vendor/lib64/com.qti.feature2.mux.so
 vendor/lib64/com.qti.feature2.qcfa.so
@@ -290,7 +262,6 @@ vendor/lib64/camera/com.qti.sensormodule.mot_cusco_ov32b40_ofilm.bin
 vendor/lib64/camera/com.qti.sensormodule.mot_cusco_s5kjd1_ofilm.bin
 
 # Camera tuned
-vendor/lib64/camera/com.qti.tuned.default.bin
 vendor/lib64/camera/com.qti.tuned.mot_cusco_gc13a2.bin
 vendor/lib64/camera/com.qti.tuned.mot_cusco_hi1336.bin
 vendor/lib64/camera/com.qti.tuned.mot_cusco_imx896.bin
@@ -304,7 +275,6 @@ vendor/bin/capsense_reset
 vendor/firmware/cps4038.bin
 
 # Display calibration data
-vendor/etc/display/FOSSConfig.xml
 vendor/etc/display/qdcm_calib_data_mipi_mot_vid_csot_667_1080p_dsc_120hz_fhd.json
 vendor/etc/display/qdcm_calib_data_mipi_mot_vid_tm_667_1080p_dsc_120hz_fhd.json
 
@@ -315,8 +285,6 @@ system_ext/etc/permissions/com.android.hotwordenrollment.common.util.xml
 system_ext/framework/com.android.hotwordenrollment.common.util.jar
 
 # Input
-vendor/usr/keylayout/ReadyForAirRemote_Consumer_Control.kl
-vendor/usr/keylayout/ReadyForAirRemote_Keyboard.kl
 vendor/usr/keylayout/goodix_ts.kl
 
 # MotCamera3
@@ -341,7 +309,6 @@ product/etc/permissions/com.motorola.camera3.content.ai.xml:vendor/etc/permissio
 product/etc/permissions/com.motorola.camera3.cusco.xml:vendor/etc/permissions/com.motorola.camera3.cusco.xml
 product/etc/permissions/com.motorola.camera3.lens.xml:vendor/etc/permissions/com.motorola.camera3.lens.xml
 product/etc/permissions/com.motorola.camera3.xml:vendor/etc/permissions/com.motorola.camera3.xml
-product/etc/permissions/com.motorola.moto-uirefresh.xml
 
 # NFC Firmware
 vendor/firmware/st21nfc_fw.bin
@@ -417,10 +384,6 @@ vendor/etc/sensors/sns_reg_config
 vendor/firmware/st54j_fw.bin
 
 # Thermal configs
-vendor/etc/thermal-engine-cusco-camera.conf
-vendor/etc/thermal-engine-cusco-fastc.conf
-vendor/etc/thermal-engine-cusco-game-perf.conf
-vendor/etc/thermal-engine-cusco-gb.conf
 vendor/etc/thermal-engine-cusco.conf
 vendor/etc/thermal-engine.conf
 
