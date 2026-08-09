@@ -199,6 +199,12 @@ on boot
     write /proc/sys/vm/dirty_background_bytes 26214400
     write /proc/sys/vm/dirty_bytes 104857600
 
+service vendor.modem-rfs-sh /vendor/bin/init.mmi.modem-rfs.sh loop_forever
+    class late_start
+    user root
+    group log system radio
+    oneshot
+
 service capsense_reset /system/vendor/bin/capsense_reset
    class core
    user system
@@ -217,6 +223,10 @@ service mot_flip_count /vendor/bin/mot_flip_count
 on property:sys.boot_completed=1
     start mot_flip_count
     chmod 0666 /mnt/vendor/persist/sensors/registry/registry/icm4x6xx_0_platform.gyro.fac_cal.bias
+
+service vendor.motpsd /system/vendor/bin/motpsd
+    class late_start
+    user root
 
 #change for Geneva5G NA (SM6450) because the node changed
 on property:vendor.wifi.tethering=false
@@ -259,3 +269,6 @@ on property:vendor.bluetooth.sar_state=disconnect
 # Disable the host silent recovery
 on property:sys.boot_completed=1 && property:ro.build.type=userdebug
     write /sys/class/remoteproc/remoteproc3/recovery disabled
+
+on  post-fs
+    setprop dalvik.vm.heapgrowthlimit 256m
