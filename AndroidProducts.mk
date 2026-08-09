@@ -15,4 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_cuscoi.mk
+    $(LOCAL_DIR)/lineage_cusco.mk
