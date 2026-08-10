@@ -44,7 +44,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/root/init.recovery.touch.rc:recovery/root/init.recovery.touch.rc
 
 # NFC
-TARGET_USES_ST_NFC := true
+PRODUCT_PACKAGES += \
+    com.android.nfc_extras \
+    Tag
 
 # Overlay
 PRODUCT_PACKAGES += \
