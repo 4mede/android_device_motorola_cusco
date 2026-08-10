@@ -41,7 +41,9 @@ $(foreach f,$(wildcard $(LOCAL_PATH)/rootdir/bin/*.sh),\
         $(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_VENDOR)/bin/$(notdir $f)))
 
 # NFC
-TARGET_USES_ST_NFC := true
+PRODUCT_PACKAGES += \
+    com.android.nfc_extras \
+    Tag
 
 # Overlay
 PRODUCT_PACKAGES += \
