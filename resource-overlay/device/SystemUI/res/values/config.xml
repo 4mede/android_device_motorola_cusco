@@ -29,5 +29,8 @@
     <!-- Burn in protection -->
     <bool name="config_statusBarBurnInProtection">true</bool>
     <integer name="config_shift_interval">60</integer>
+    
+    <!-- Whether to show a alarm dialog when device's usb port is overheating. -->
+    <integer name="config_showUsbPortAlarm">1</integer>
 
 </resources>

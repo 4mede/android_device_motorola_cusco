@@ -258,4 +258,13 @@
     <!-- Specifies the maximum burn-in offset vertically. -->
     <integer name="config_burnInProtectionMaxVerticalOffset">40</integer>
 
+    <!-- Low zone brightness thresholds in the range [0, 255] -->
+    <array name="config_brightnessThresholdsOfPeakRefreshRate" translatable="false">
+        <item>50</item>
+    </array>
+
+    <!-- Low zone lux thresholds -->
+    <array name="config_ambientThresholdsOfPeakRefreshRate" translatable="false">
+        <item>-1</item>
+    </array>
 </resources>
