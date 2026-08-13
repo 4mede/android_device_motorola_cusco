@@ -16,19 +16,16 @@
         <item>50</item>
     </integer-array>
 
-    <!-- Vibrator pattern for feedback about booting with safe mode enabled -->
-    <integer-array name="config_safeModeEnabledVibePattern">
-        <item>0</item>
-        <item>0</item>
-        <item>94</item>
-    </integer-array>
+    <!-- Note: This setting is deprecated, please use
+    config_screenBrightnessSettingDefaultFloat instead -->
+    <integer name="config_screenBrightnessSettingDefault">98</integer>
 
-    <!-- Minimum screen brightness setting allowed by the power manager.
-          The user is forbidden from setting the brightness below this level. -->
+    <!-- Minimum screen brightness setting allowed by power manager.
+         -2 is invalid so setting will resort to int value specified above.
+         Set this to 0.0 to allow screen to go to minimal brightness.
+         The user is forbidden from setting the brightness below this level. -->
     <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.03418803</item>
 
-    <integer name="config_screenBrightnessSettingDefault">98</integer>
-    
     <!-- Stability requirements in milliseconds for accepting a new brightness level.  This is used
          for debouncing the light sensor.  Different constants are used to debounce the light sensor
          when adapting to brighter or darker environments.  This parameter controls how quickly
@@ -90,7 +87,7 @@
          This array should have size one greater than the size of the config_autoBrightnessLevels
          array. The brightness values must be non-negative and non-decreasing. This must be
          overridden in platform specific overlays -->
-    <integer-array name="config_autoBrightnessDisplayValuesNits">
+    <array name="config_autoBrightnessDisplayValuesNits">
         <item>3</item>
         <item>8</item>
         <item>15</item>
@@ -105,7 +102,7 @@
         <item>850</item>
         <item>1050</item>
         <item>1200</item>
-    </integer-array>
+    </array>
 
     <!-- An array describing the screen's backlight values corresponding to the brightness
          values in the config_screenBrightnessNits array.
@@ -135,7 +132,7 @@
          brightness modes but only the maximum brightness value obtainable in a sustainable manner.
 
          This array should be equal in size to config_screenBrightnessBacklight -->
-    <integer-array name="config_screenBrightnessNits">
+    <array name="config_screenBrightnessNits">
         <item>3</item>
         <item>8</item>
         <item>15</item>
@@ -150,13 +147,33 @@
         <item>850</item>
         <item>1050</item>
         <item>1200</item>
-    </integer-array>
+    </array>
 
-    <!-- MMS user agent string -->
+    <!-- MMS user agent string, for example OemNameDeviceName
+         If the string contains a '%s' format string then that substring will be replaced
+         with the value of Build.MODEL , ie
+         <string name="config_mms_user_agent">OemName%s</string> -->
     <string name="config_mms_user_agent" translatable="false">motorolaedge50fusion</string>
 
-    <!-- MMS user agent prolfile url -->
+    <!-- MMS user agent prolfile url, for example https://uaprof.oem_name.com/DeviceName.xml
+         if the string contains a '%s' format string then that substring will be replaced
+         with the value of Build.MODEL , ie https://uaprof.oem_name.com/%s.xml -->
     <string name="config_mms_user_agent_profile_url" translatable="false">http://uaprof.motorola.com/phoneconfig/motov1/Profile/motov1.rdf</string>
+
+    <!-- ComponentName of a dream to show whenever the system would otherwise have
+         gone to sleep.  When the PowerManager is asked to go to sleep, it will instead
+         try to start this dream if possible.  The dream should typically call startDozing()
+         to put the display into a low power state and allow the application processor
+         to be suspended.  When the dream ends, the system will go to sleep as usual.
+         Specify the component name or an empty string if none.
+
+         Note that doze dreams are not subject to the same start conditions as ordinary dreams.
+         Doze dreams will run whenever the power manager is in a dozing state. -->
+    <string name="config_dozeComponent" translatable="false">com.android.systemui/com.android.systemui.doze.DozeService</string>
+
+    <!-- If true, the doze component is not started until after the screen has been
+         turned off and the screen off animation has been performed. -->
+    <bool name="config_dozeAfterScreenOffByDefault">true</bool>
 
     <!-- Type of the double tap sensor. Empty if double tap is not supported. -->
     <string name="config_dozeDoubleTapSensorType" translatable="false">org.lineageos.sensor.double_tap</string>
@@ -173,124 +190,6 @@
          during initialization when the setting is still null. -->
     <bool name="config_dozeAlwaysOnEnabled">false</bool>
 
-    <!-- The bounding path of the cutout region of the main built-in display.
-         Must either be empty if there is no cutout region, or a string that is parsable by
-         {@link android.util.PathParser}.
-
-         The path is assumed to be specified in display coordinates with pixel units and in
-         the display's native orientation, with the origin of the coordinate system at the
-         center top of the display. Optionally, you can append either `@left` or `@right` to the
-         end of the path string, in order to change the path origin to either the top left,
-         or top right of the display.
-
-         To facilitate writing device-independent emulation overlays, the marker `@dp` can be
-         appended after the path string to interpret coordinates in dp instead of px units.
-         Note that a physical cutout should be configured in pixels for the best results.
-
-         If the display supports multiple resolutions, please define the path config based on the
-         highest resolution so that it can be scaled correctly in each resolution.
-
-         Example for a 10px x 10px square top-center cutout:
-                <string ...>M -5,0 L -5,10 L 5,10 L 5,0 Z</string>
-         Example for a 10dp x 10dp square top-center cutout:
-                <string ...>M -5,0 L -5,10 L 5,10 L 5,0 Z @dp</string>
-
-         @see https://www.w3.org/TR/SVG/paths.html#PathData
-         -->
-    <string name="config_mainBuiltInDisplayCutout" translatable="false">
-        M 510,52
-        a 30,30 0 1 0 60,0
-        a 30,30 0 1 0 -60,0
-        Z
-        @left
-    </string>
-
-    <!-- Like config_mainBuiltInDisplayCutout, but this path is used to report the
-         one single bounding rect per device edge to the app via
-         {@link DisplayCutout#getBoundingRect}. Note that this path should try to match the visual
-         appearance of the cutout as much as possible, and may be smaller than
-         config_mainBuiltInDisplayCutout
-         -->
-    <string name="config_mainBuiltInDisplayCutoutRectApproximation" translatable="false">
-        M -36.5 0
-        L -36.5 94
-        L 36.5 94
-        L 36.5 0
-        Z
-    </string>
-
-    <!-- Whether the display cutout region of the main built-in display should be forced to
-         black in software (to avoid aliasing or emulate a cutout that is not physically existent).
-         -->
-    <bool name="config_fillMainBuiltInDisplayCutout">true</bool>
-
-    <!-- List of biometric sensors on the device, in decreasing strength. Consumed by AuthService
-         when registering authenticators with BiometricService. Format must be ID:Modality:Strength,
-         where: IDs are unique per device, Modality as defined in BiometricAuthenticator.java,
-         and Strength as defined in Authenticators.java -->
-    <string-array name="config_biometric_sensors" translatable="false">
-        <item>0:2:15</item> <!-- ID0:Fingerprint:Strong -->
-    </string-array>
-
-    <!-- The properties of a UDFPS sensor in pixels, in the order listed below: -->
-    <integer-array name="config_udfps_sensor_props" translatable="false">
-        <item>538</item> <!-- sensorLocationX -->
-        <item>2150</item> <!-- sensorLocationY -->
-        <item>90</item> <!-- sensorRadius -->
-    </integer-array>
-
-    <!-- Burn-in potection in true ambient mode. -->
-    <bool name="config_enableBurnInProtection">true</bool>
-
-    <!-- Specifies the maximum burn-in offset displacement from the center. If -1, no maximum value
-        will be used. -->
-    <integer name="config_burnInProtectionMaxRadius">70</integer>
- 
-    <!-- Specifies the minimum burn-in offset horizontally. -->
-    <integer name="config_burnInProtectionMinHorizontalOffset">-15</integer>
- 
-    <!-- Specifies the maximum burn-in offset horizontally. -->
-    <integer name="config_burnInProtectionMaxHorizontalOffset">15</integer>
- 
-    <!-- Specifies the minimum burn-in offset vertically. -->
-    <integer name="config_burnInProtectionMinVerticalOffset">-40</integer>
- 
-    <!-- Specifies the maximum burn-in offset vertically. -->
-    <integer name="config_burnInProtectionMaxVerticalOffset">40</integer>
-
-    <!-- Low zone brightness thresholds in the range [0, 255] -->
-    <array name="config_brightnessThresholdsOfPeakRefreshRate" translatable="false">
-        <item>50</item>
-    </array>
-
-    <!-- Low zone lux thresholds -->
-    <array name="config_ambientThresholdsOfPeakRefreshRate" translatable="false">
-        <item>-1</item>
-    </array>
-    
-    <!-- ComponentName of a dream to show whenever the system would otherwise have
-         gone to sleep.  When the PowerManager is asked to go to sleep, it will instead
-         try to start this dream if possible.  The dream should typically call startDozing()
-         to put the display into a low power state and allow the application processor
-         to be suspended.  When the dream ends, the system will go to sleep as usual.
-         Specify the component name or an empty string if none.
-         Note that doze dreams are not subject to the same start conditions as ordinary dreams.
-         Doze dreams will run whenever the power manager is in a dozing state. -->
-    <string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>
-
-    <!-- If true, the doze component is not started until after the screen has been
-         turned off and the screen off animation has been performed. -->
-    <bool name="config_dozeAfterScreenOffByDefault">true</bool>
-
-    <!-- Whether the always on display mode is available. This should only be enabled
-         on devices where the display has been tuned to be power efficient in DOZE and/or
-         DOZE_SUSPEND states. -->
-    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
-
-    <!-- Control whether the always on display mode is enabled by default. This value will be used
-         during initialization when the setting is still null. -->
-    <bool name="config_dozeAlwaysOnEnabled">false</bool>
-    
     <!-- Power Management: Specifies whether to decouple the auto-suspend state of the
          device from the display on/off state.
 
@@ -330,6 +229,64 @@
     -->
     <bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool>
 
+    <!-- If true, the display will be shifted around in ambient mode. -->
+    <bool name="config_enableBurnInProtection">true</bool>
+
+    <!-- Specifies the maximum burn-in offset displacement from the center. If -1, no maximum value
+         will be used. -->
+    <integer name="config_burnInProtectionMaxRadius">70</integer>
+
+    <!-- Specifies the minimum burn-in offset horizontally. -->
+    <integer name="config_burnInProtectionMinHorizontalOffset">-15</integer>
+
+    <!-- Specifies the maximum burn-in offset horizontally. -->
+    <integer name="config_burnInProtectionMaxHorizontalOffset">15</integer>
+
+    <!-- Specifies the minimum burn-in offset vertically. -->
+    <integer name="config_burnInProtectionMinVerticalOffset">-40</integer>
+
+    <!-- Specifies the maximum burn-in offset vertically. -->
+    <integer name="config_burnInProtectionMaxVerticalOffset">40</integer>
+
+    <!-- The bounding path of the cutout region of the main built-in display.
+         Must either be empty if there is no cutout region, or a string that is parsable by
+         {@link android.util.PathParser}.
+
+         The path is assumed to be specified in display coordinates with pixel units and in
+         the display's native orientation, with the origin of the coordinate system at the
+         center top of the display. Optionally, you can append either `@left` or `@right` to the
+         end of the path string, in order to change the path origin to either the top left,
+         or top right of the display.
+
+         To facilitate writing device-independent emulation overlays, the marker `@dp` can be
+         appended after the path string to interpret coordinates in dp instead of px units.
+         Note that a physical cutout should be configured in pixels for the best results.
+
+         If the display supports multiple resolutions, please define the path config based on the
+         highest resolution so that it can be scaled correctly in each resolution.
+
+         Example for a 10px x 10px square top-center cutout:
+                <string ...>M -5,0 L -5,10 L 5,10 L 5,0 Z</string>
+         Example for a 10dp x 10dp square top-center cutout:
+                <string ...>M -5,0 L -5,10 L 5,10 L 5,0 Z @dp</string>
+
+         @see https://www.w3.org/TR/SVG/paths.html#PathData
+         -->
+    <string name="config_mainBuiltInDisplayCutout" translatable="false">M 510,52 a 30,30 0 1 0 60,0 a 30,30 0 1 0 -60,0 Z @left</string>
+
+    <!-- Like config_mainBuiltInDisplayCutout, but this path is used to report the
+         one single bounding rect per device edge to the app via
+         {@link DisplayCutout#getBoundingRect}. Note that this path should try to match the visual
+         appearance of the cutout as much as possible, and may be smaller than
+         config_mainBuiltInDisplayCutout
+         -->
+    <string name="config_mainBuiltInDisplayCutoutRectApproximation" translatable="false">M -36.5 0 L -36.5 94 L 36.5 94 L 36.5 0 Z</string>
+
+    <!-- Whether the display cutout region of the main built-in display should be forced to
+         black in software (to avoid aliasing or emulate a cutout that is not physically existent).
+         -->
+    <bool name="config_fillMainBuiltInDisplayCutout">true</bool>
+
     <!-- The default refresh rate for a given device. Change this value to set a higher default
          refresh rate. If the hardware composer on the device supports display modes with a higher
          refresh rate than the default value specified here, the framework may use those higher
@@ -345,4 +302,41 @@
          rates are available from hardware composer. Only has an effect if the value is
          non-zero. -->
     <integer name="config_defaultPeakRefreshRate">120</integer>
+
+    <!-- The display uses different gamma curves for different refresh rates. It's hard for panel
+         vendors to tune the curves to have exact same brightness for different refresh rate. So
+         flicker could be observed at switch time. The issue is worse at the gamma lower end.
+         In addition, human eyes are more sensitive to the flicker at darker environment.
+         To prevent flicker, we only support higher refresh rates if the display brightness is above
+         a threshold.
+         For example, no higher refresh rate if
+             display brightness <= disp0 && ambient brightness <= amb0
+             || display brightness <= disp1 && ambient brightness <= amb1
+         Brightness thresholds are paired with lux thresholds - they both have to be met.
+         A negative brightness or lux value means that only one threshold should be used - e.g. if
+         the brightness value is negative, only the lux threshold is applied. -->
+    <!-- Low zone brightness thresholds in the range [0, 255] -->
+    <integer-array name="config_brightnessThresholdsOfPeakRefreshRate">
+        <item>50</item>
+    </integer-array>
+
+    <!-- Low zone lux thresholds -->
+    <integer-array name="config_ambientThresholdsOfPeakRefreshRate">
+        <item>-1</item>
+    </integer-array>
+
+    <!-- List of biometric sensors on the device, in decreasing strength. Consumed by AuthService
+         when registering authenticators with BiometricService. Format must be ID:Modality:Strength,
+         where: IDs are unique per device, Modality as defined in BiometricAuthenticator.java,
+         and Strength as defined in Authenticators.java -->
+    <string-array name="config_biometric_sensors" translatable="false">
+        <item>0:2:15</item> <!-- ID0:Fingerprint:Strong -->
+    </string-array>
+
+    <!-- The properties of a UDFPS sensor in pixels, in the order listed below: -->
+    <integer-array name="config_udfps_sensor_props">
+        <item>538</item> <!-- sensorLocationX -->
+        <item>2150</item> <!-- sensorLocationY -->
+        <item>90</item> <!-- sensorRadius -->
+    </integer-array>
 </resources>
