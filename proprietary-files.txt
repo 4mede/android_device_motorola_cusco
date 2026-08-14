@@ -308,19 +308,13 @@ vendor/etc/display/FOSSConfig.xml
 vendor/etc/display/qdcm_calib_data_mipi_mot_vid_csot_667_1080p_dsc_120hz_fhd.json
 vendor/etc/display/qdcm_calib_data_mipi_mot_vid_tm_667_1080p_dsc_120hz_fhd.json
 
-# Fingerprint
-vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-goodixservice
-vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service-jv
-vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-goodixservice.rc
-vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service-jv2.rc
-vendor/lib64/hw/anc.hal.so
-vendor/lib64/hw/fingerprint.goodix.default.so
-vendor/lib64/com.anc.fingerprint.extension@1.0.so
-vendor/lib64/com.motorola.hardware.biometric.fingerprint@1.1.so;DISABLE_CHECKELF
-vendor/lib64/com.motorola.hardware.display.panel@1.0.so
-vendor/lib64/com.motorola.hardware.display.panel@1.1.so
-vendor/lib64/libgf_hal.so
-vendor/lib64/vendor.goodix.hardware.biometrics.fingerprint@2.1.so
+# Fingerprint - from cuscoi
+vendor/lib64/hw/anc.hal.so|ebb5de573b864beaef618d25d9be637a1e14b0e5
+vendor/lib64/hw/fingerprint.goodix.default.so|571105307da6efce431780dbb29ee522b1633236
+vendor/lib64/com.motorola.hardware.biometric.fingerprint-V2-ndk.so|31e2345498a1881355335881947815f702ef0809
+vendor/lib64/com.motorola.hardware.display.panel-V1-ndk.so|4b6c6fbea749a7cdfabd501834b484d2f2937848
+vendor/lib64/libgf_hal.so|08ef7c7f4d0e6ec213d81183df4085934c012d44
+vendor/lib64/vendor.goodix.hardware.biometrics.fingerprint-V1-ndk.so|43ba96e4c3da1d57867101dbc0744c82bd74e198
 
 # HotwordEnrollment
 product/priv-app/HotwordEnrollmentOKGoogleHEXAGON_WIDEBAND/HotwordEnrollmentOKGoogleHEXAGON_WIDEBAND.apk

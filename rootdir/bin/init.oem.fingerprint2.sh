@@ -25,7 +25,7 @@ GKI_PATH=$(getprop $PROP_GKI_PATH)
 vendor_list=('goodix' 'jiiov')
 kernel_so_list=("/vendor/lib/modules/$GKI_PATH/goodix_fod_mmi.ko" "/vendor/lib/modules/$GKI_PATH/anc_fps_mmi.ko")
 kernel_so_name_list=("goodix_fod_mmi.ko" "anc_fps_mmi.ko")
-hal_list=('goodix_hal' 'jv_hal')
+hal_list=('vendor.fingerprint-default')
 last_vendor_index=`expr ${#vendor_list[@]} - 1`
 vendor_list_size=${#vendor_list[@]}
 
@@ -36,11 +36,6 @@ fi
 
 if [ $vendor_list_size != ${#kernel_so_name_list[@]} ]; then
     log "error, vendor_list.size is not equal to kernel_so_name_list"
-    return 255
-fi
-
-if [ $vendor_list_size != ${#hal_list[@]} ]; then
-    log "error, vendor_list.size is not equal to hal_list"
     return 255
 fi
 
