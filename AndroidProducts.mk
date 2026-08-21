@@ -15,4 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_cusco.mk
+    $(LOCAL_DIR)/aospa_cusco.mk

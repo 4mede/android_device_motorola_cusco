@@ -31,8 +31,14 @@ namespace_imports = [
     'device/motorola/sm7435-common',
     'vendor/motorola/sm7435-common',
     'hardware/motorola',
-    'hardware/qcom-caf/sm8450',
-    'vendor/qcom/opensource/commonsys-intf/display',
+    'hardware/qcom/display',
+    'hardware/qcom/display/gralloc',
+    'hardware/qcom/display/libdebug',
+    'vendor/qcom/common/vendor/adreno/s',
+    'vendor/qcom/common/vendor/display/5.10',
+    'vendor/qcom/common/vendor/media/5.10',
+    'vendor/qcom/common/vendor/perf',
+    'vendor/qcom/common/vendor/wlan',
 ]
 
 
@@ -82,25 +88,9 @@ blob_fixups: blob_fixups_user_type = {
             '_ZN7android13GraphicBufferC1EPK13native_handleNS0_16HandleWrapMethodEjjijmj',
         ],
     ),
-    (
-        'vendor/bin/hw/vendor.qti.camera.provider@2.7-service_64',
-        'vendor/lib64/camx.device@3.4-ext-impl.so',
-        'vendor/lib64/camx.device@3.5-ext-impl.so',
-        'vendor/lib64/camx.device@3.6-ext-impl.so',
-        'vendor/lib64/camx.provider@2.4-external.so',
-        'vendor/lib64/camx.provider@2.4-impl.so',
-        'vendor/lib64/camx.provider@2.4-legacy.so',
-        'vendor/lib64/camx.provider@2.5-external.so',
-        'vendor/lib64/camx.provider@2.5-legacy.so',
-        'vendor/lib64/camx.provider@2.6-legacy.so',
-        'vendor/lib64/camx.provider@2.7-legacy.so',
-    ): blob_fixup().replace_needed(
-        'libtinyxml2.so', 'libtinyxml2-v34.so'
-    ),
 }
 
 extract_fns: extract_fns_user_type = {
-    star_firmware_regex: extract_star_firmware,
 }
 
 module = ExtractUtilsModule(
@@ -110,7 +100,6 @@ module = ExtractUtilsModule(
     lib_fixups=lib_fixups,
     namespace_imports=namespace_imports,
     add_generated_carriersettings=True,
-    add_firmware_proprietary_file=True,
     extract_fns=extract_fns,
 )
 

@@ -33,15 +33,17 @@ PRODUCT_COPY_FILES += \
 TARGET_SCREEN_HEIGHT := 2400
 TARGET_SCREEN_WIDTH := 1080
 
+# Firmware
+$(call inherit-product-if-exists, vendor/motorola/firmware/cusco/config.mk)
+
 # Init
 $(foreach f,$(wildcard $(LOCAL_PATH)/rootdir/etc/init/hw/*.rc),\
         $(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/$(notdir $f)))
 $(foreach f,$(wildcard $(LOCAL_PATH)/rootdir/bin/*.sh),\
         $(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_VENDOR)/bin/$(notdir $f)))
     
-# Fingerprint
-PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.3-service.moto_sm7435_fod
+# Kernel
+KERNEL_PREBUILT_DIR := $(LOCAL_PATH)-kernel
 
 # LiveDisplay
 $(call soong_config_set_bool,livedisplay_sysfs,enable_af,true)
@@ -69,10 +71,6 @@ PRODUCT_SHIPPING_API_LEVEL := 34
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
-
-# Vibrator
-$(call soong_config_set,qti_vibrator,effect_lib,libqtivibratoreffect.moto_sm7435-richtap)
-$(call soong_config_set_bool,qti_vibrator,use_effect_stream,true)
 
 # Inherit from motorola sm7435-common
 $(call inherit-product, device/motorola/sm7435-common/common.mk)

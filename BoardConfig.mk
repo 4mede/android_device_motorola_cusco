@@ -22,9 +22,6 @@ include device/motorola/sm7435-common/BoardConfigCommon.mk
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := cusco
 
-# Kernel
-TARGET_KERNEL_CONFIG += vendor/ext_config/moto-parrot-cusco.config
-
 # Manifest
 ODM_MANIFEST_SKUS += b d
 ODM_MANIFEST_B_FILES := $(DEVICE_PATH)/sku/manifest_b.xml $(COMMON_PATH)/vintf/manifest_ss.xml

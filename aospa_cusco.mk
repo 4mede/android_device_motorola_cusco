@@ -21,10 +21,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from cuscoi device
 $(call inherit-product, device/motorola/cusco/device.mk)
 
-# Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common aospa stuff.
+$(call inherit-product, vendor/aospa/target/product/aospa-target.mk)
 
-PRODUCT_NAME := lineage_cusco
+PRODUCT_NAME := aospa_cusco
 PRODUCT_DEVICE := cusco
 PRODUCT_MANUFACTURER := motorola
 PRODUCT_BRAND := motorola
