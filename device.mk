@@ -38,11 +38,6 @@ $(foreach f,$(wildcard $(LOCAL_PATH)/rootdir/etc/init/hw/*.rc),\
         $(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/$(notdir $f)))
 $(foreach f,$(wildcard $(LOCAL_PATH)/rootdir/bin/*.sh),\
         $(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_VENDOR)/bin/$(notdir $f)))
-    
-# Fingerprint
-PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint-service.moto \
-    libudfpshandler_moto
 
 # LiveDisplay
 $(call soong_config_set_bool,livedisplay_sysfs,enable_af,true)
