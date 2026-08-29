@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!--
+        Optional placeholders replaced at runtime:
+          {device} - Device name
+          {type} - Build type
+          {incr} - Incremental version
+    -->
+    <string name="updater_server_url" translatable="false">https://raw.githubusercontent.com/4mede/ota_provider/master/cusco/update.json</string>
+
+    <!-- Download and installation -->
+    <string name="menu_changelog_url" translatable="false">https://t.me/motorolasupportchat/73513</string>
+</resources>
