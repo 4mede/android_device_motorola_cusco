@@ -5,12 +5,7 @@
 # com.motorola.hardware.biometric.fingerprint@1.1 build is unable to resolve its symbols
 
 # ACDB Data
-vendor/etc/acdbdata/nn_ns_models/fai__2.0.0_0.1__3.0.0_0.0__eai_1.36_enpu2.pmd
-vendor/etc/acdbdata/nn_ns_models/fai__2.3.0_0.1__3.0.0_0.0__eai_1.10.pmd
-vendor/etc/acdbdata/nn_ns_models/fai__2.3.0_0.1__3.0.0_0.0__eai_1.36_enpu2_comp.pmd
-vendor/etc/acdbdata/nn_ns_models/fai__2.6.3_0.0__3.0.0_0.0__eai_1.10_enpu1.pmd
 vendor/etc/acdbdata/nn_ns_models/fai__2.7.20_0.0__3.0.0_0.0__eai_1.36_enpu2.pmd
-vendor/etc/acdbdata/nn_ns_models/fai__2.7.2_0.0__3.0.0_0.0__eai_1.36_enpu2.pmd
 vendor/etc/acdbdata/nn_ns_models/fai__4.7.0_0.0__3.0.0_0.0__3.1.1_0.0__3.2.0_0.1__eai_1.43_enpu2.pmd
 vendor/etc/acdbdata/nn_ns_models/fai__4.8.14_0.0__3.0.0_0.0__3.1.1_0.0__3.2.0_0.1__eai_1.43_enpu2.pmd
 vendor/etc/acdbdata/nn_ns_models/fai__4.8.4_0.0__3.0.0_0.0__eai_1.43_enpu2.pmd
